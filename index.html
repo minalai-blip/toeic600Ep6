@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【EP6】多益600核心單字・打底特訓</title>
+    <title>【EP06】多益600核心單字・打底特訓</title>
     <style>
         :root {
             --primary: #2c3e50;
@@ -83,11 +83,11 @@
 <body>
 
 <div class="container">
-    <img src="banner.jpg" id="main-banner" alt="EP6 打底特訓" class="banner"> 
+    <img src="banner.jpg" id="main-banner" alt="EP06 打底特訓" class="banner"> 
 
     <div class="content-padding">
         <div id="intro-area" class="intro-header">
-            <h1>【EP6】基礎打底特訓</h1>
+            <h1>【EP06】基礎打底特訓</h1>
             <p>🔥 直覺 3 秒挑戰。5 題快速上手。🔥</p>
         </div>
 
@@ -128,69 +128,118 @@
             
             <div><span class="retry-link" onclick="initQuiz()">↺ 再練一次這組單字</span></div>
 
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNkem-vuwWTDc5eEfhv4FlqpubNv7dsoY0uFQEcv4c5rCtyg/viewform?usp=header" class="cta-button" target="_blank">前往👉實戰驗收：📝多益模擬題型</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNkem-vuwWTDc5eEfhv4FlqpubNv7dsoY0uFQEcv4c5rCtyg/viewform?usp=header" class="cta-button" target="_blank">前往👉下一關:中階情境演練</a>
 
             <div class="footer-upsell">
-                💡 這套「直覺單字+實戰刷題」模式很有效吧!完整多益衝刺計畫已在蝦皮上架。<br>
-                <a href="https://shopee.tw/YOUR_LINK" class="shopee-link" target="_blank">點此前往蝦皮賣場看更多</a>
+                這套「單字直覺」練習模式很有效吧!完整多益衝刺計畫已上架。<br>
+                <a href="https://shopee.tw/YOUR_LINK" class="shopee-link" target="_blank">點此前往看更多</a>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-// EP6 核心資料庫：完全移除首字母提示，改為純挖空
+// EP06 核心資料庫 (126 - 150 共 25 字，兩種類型答案交互不重複且完美挖空)
 const rawData = [
-    { type: "單字辨析", word: "an <u><b>expert</b></u> in the field", show: "專家", ans: true, feedback: "expert 是「專家」。" },
-    { type: "句型搭配", word: "expert", show: "an ______ in the field / 填入：expert", ans: true, feedback: "應填入 expert。" },
-    { type: "單字辨析", word: "We were <u><b>impressed</b></u> by your presentation.", show: "提醒", ans: false, feedback: "impressed 是「給...留下印象;使...佩服」。" },
-    { type: "句型搭配", word: "impress", show: "We were ______ by your presentation. / 填入：impressed", ans: true, feedback: "應填入 impressed。" },
-    { type: "單字辨析", word: "work <u><b>mainly</b></u> in electronics", show: "主要", ans: true, feedback: "mainly 是「主要地」。" },
-    { type: "句型搭配", word: "mainly", show: "work ______ in electronics / 填入：highly", ans: false, feedback: "應填入 mainly。" },
-    { type: "單字辨析", word: "make <u><b>suggestions</b></u> for improvement", show: "包裝", ans: false, feedback: "suggestion 是「建議」。" },
-    { type: "句型搭配", word: "suggestion", show: "make ______ for improvement / 填入：suggestions", ans: true, feedback: "應填入 suggestions。" },
-    { type: "單字辨析", word: "relationships with <u><b>suppliers</b></u>", show: "進貨商、供應商", ans: true, feedback: "supplier 是「進貨商、供應商」。" },
-    { type: "句型搭配", word: "supplier", show: "relationships with ______ / 填入：individuals", ans: false, feedback: "應填入 suppliers。" },
-    { type: "單字辨析", word: "an important <u><b>document</b></u>", show: "文件", ans: true, feedback: "document 是「文件」。" },
-    { type: "句型搭配", word: "document", show: "an important ______ / 填入：document", ans: true, feedback: "應填入 document。" },
-    { type: "單字辨析", word: "<u><b>remind</b></u> employees about safety rules", show: "需要", ans: false, feedback: "remind 是「提醒」。" },
-    { type: "句型搭配", word: "remind", show: "______ employees about safety rules / 填入：remind", ans: true, feedback: "應填入 remind。" },
-    { type: "單字辨析", word: "Workers are <u><b>required</b></u> to follow the schedule.", show: "需要", ans: true, feedback: "require 是「需要、要求」。" },
-    { type: "句型搭配", word: "require", show: "Workers are ______ to follow the schedule. / 填入：encouraged", ans: false, feedback: "應填入 required。" },
-    { type: "單字辨析", word: "a sales <u><b>representative</b></u>", show: "負責人、代表人", ans: true, feedback: "representative 是「負責人、代表人、業務代表」。" },
-    { type: "句型搭配", word: "representative", show: "a sales ______ / 填入：representative", ans: true, feedback: "應填入 representative。" },
-    { type: "單字辨析", word: "the <u><b>packaging</b></u> area in the factory", show: "總部", ans: false, feedback: "packaging 是「包裝(業)、包材」。" },
-    { type: "句型搭配", word: "packaging", show: "the ______ area in the factory / 填入：property", ans: false, feedback: "應填入 packaging。" },
-    { type: "單字辨析", word: "a job <u><b>description</b></u> on the website", show: "說明、敘述、描寫", ans: true, feedback: "description 是「說明、敘述、描寫」。" },
-    { type: "句型搭配", word: "description", show: "a job ______ on the website / 填入：description", ans: true, feedback: "應填入 description。" },
-    { type: "單字辨析", word: "a <u><b>property</b></u> manager for real estate", show: "資產、財產;房地產", ans: true, feedback: "property 是「資產、財產;房地產」。" },
-    { type: "句型搭配", word: "property", show: "a ______ manager for real estate / 填入：laboratory", ans: false, feedback: "應填入 property。" },
-    { type: "單字辨析", word: "Call me at <u><b>extension</b></u> 5388.", show: "分機", ans: true, feedback: "extension 是「分機」。" },
-    { type: "句型搭配", word: "extension", show: "Call me at ______ 5388. / 填入：extension", ans: true, feedback: "應填入 extension。" },
-    { type: "單字辨析", word: "<u><b>inquire</b></u> about the new position", show: "考慮", ans: false, feedback: "inquire 是「詢問」。" },
-    { type: "句型搭配", word: "inquire", show: "______ about the new position / 填入：consider", ans: false, feedback: "應填入 inquire。" },
-    { type: "單字辨析", word: "display <u><b>merchandise</b></u> on the shelves", show: "商品", ans: true, feedback: "merchandise 是「商品」。" },
-    { type: "句型搭配", word: "merchandise", show: "display ______ on the shelves / 填入：merchandise", ans: true, feedback: "應填入 merchandise。" },
-    { type: "單字辨析", word: "a <u><b>highly</b></u> competitive market", show: "非常", ans: true, feedback: "highly 是「非常」。" },
-    { type: "句型搭配", word: "highly", show: "a ______ competitive market / 填入：mainly", ans: false, feedback: "應填入 highly。" },
-    { type: "單字辨析", word: "The campaign <u><b>resulted</b></u> in more sales.", show: "結果(最終帶來)", ans: true, feedback: "result in 是「導致、最終帶來結果」。" },
-    { type: "句型搭配", word: "result", show: "The campaign ______ in more sales. / 填入：resulted", ans: true, feedback: "應填入 resulted。" },
-    { type: "單字辨析", word: "Thank you for your <u><b>assistance</b></u> with the project.", show: "建議", ans: false, feedback: "assistance 是「協助」。" },
-    { type: "句型搭配", word: "assistance", show: "Thank you for your ______ with the project. / 填入：extension", ans: false, feedback: "應填入 assistance。" },
-    { type: "單字辨析", word: "Employees are <u><b>encouraged</b></u> to join the seminar.", show: "鼓勵、促進", ans: true, feedback: "encourage 是「鼓勵、促進」。" },
-    { type: "句型搭配", word: "encourage", show: "Employees are ______ to join the seminar. / 填入：encouraged", ans: true, feedback: "應填入 encouraged。" },
-    { type: "單字辨析", word: "each <u><b>individual</b></u> in the department", show: "個人", ans: true, feedback: "individual 是「個人」。" },
-    { type: "句型搭配", word: "individual", show: "each ______ in the department / 填入：supplier", ans: false, feedback: "應填入 individual。" },
-    { type: "單字辨析", word: "safety rules in the <u><b>laboratory</b></u>", show: "實驗室", ans: true, feedback: "laboratory 是「實驗室」。" },
-    { type: "句型搭配", word: "laboratory", show: "safety rules in the ______ / 填入：laboratory", ans: true, feedback: "應填入 laboratory。" },
-    { type: "單字辨析", word: "<u><b>consider</b></u> working abroad", show: "出貨、運送", ans: false, feedback: "consider 是「考慮;認為」。" },
-    { type: "句型搭配", word: "consider", show: "______ working abroad / 填入：consider", ans: true, feedback: "應填入 consider。" },
-    { type: "單字辨析", word: "move the <u><b>headquarters</b></u> to New York", show: "總部", ans: true, feedback: "headquarters 是「總部」。" },
-    { type: "句型搭配", word: "headquarters", show: "move the ______ to New York / 填入：description", ans: false, feedback: "應填入 headquarters。" },
-    { type: "單字辨析", word: "We are ready to <u><b>ship</b></u> your order.", show: "出貨、運送", ans: true, feedback: "ship 是「出貨、運送」。" },
-    { type: "句型搭配", word: "ship", show: "We are ready to ______ your order. / 填入：ship", ans: true, feedback: "應填入 ship。" },
-    { type: "單字辨析", word: "<u><b>commercial</b></u> real estate in the downtown area", show: "商業的、貿易的", ans: true, feedback: "commercial 是「商業的、貿易的」。" },
-    { type: "句型搭配", word: "commercial", show: "______ real estate in the downtown area / 填入：impressed", ans: false, feedback: "應填入 commercial。" }
+    // 126. expert (辨析: True / 句型: False)
+    { id: "expert", type: "單字辨析", word: "an <u><b>expert</b></u> in the field", show: "專家", ans: true, feedback: "expert 是名詞「專家」。" },
+    { id: "expert", type: "句型搭配", show: "an ______ in the field / 填入：impress", ans: false, feedback: "應填入 expert。" },
+
+    // 127. impress (辨析: False / 句型: True)
+    { id: "impress", type: "單字辨析", word: "We were <u><b>impressed</b></u> by your presentation.", show: "主要", ans: false, feedback: "impress 是動詞「給...留下印象;使...佩服」。" },
+    { id: "impress", type: "句型搭配", show: "We were ______ed by your presentation. / 填入：impressed", ans: true, feedback: "應填入 impressed。" },
+
+    // 128. mainly (辨析: True / 句型: False)
+    { id: "mainly", type: "單字辨析", word: "work <u><b>mainly</b></u> in electronics", show: "主要", ans: true, feedback: "mainly 是副詞「主要」。" },
+    { id: "mainly", type: "句型搭配", show: "work ______ in electronics / 填入：individual", ans: false, feedback: "應填入 mainly。" },
+
+    // 129. suggestion (辨析: False / 句型: True)
+    { id: "suggestion", type: "單字辨析", word: "make <u><b>suggestions</b></u> for improvement", show: "進貨商、供應商", ans: false, feedback: "suggestion 是名詞「建議」。" },
+    { id: "suggestion", type: "句型搭配", show: "make ______ for improvement / 填入：suggestions", ans: true, feedback: "應填入 suggestions。" },
+
+    // 130. supplier (辨析: True / 句型: False)
+    { id: "supplier", type: "單字辨析", word: "relationships with <u><b>suppliers</b></u>", show: "進貨商、供應商", ans: true, feedback: "supplier 是名詞「進貨商、供應商」。" },
+    { id: "supplier", type: "句型搭配", show: "relationships with ______ / 填入：encourage", ans: false, feedback: "應填入 suppliers。" },
+
+    // 131. document (辨析: False / 句型: True)
+    { id: "document", type: "單字辨析", word: "an important <u><b>document</b></u>", show: "提醒", ans: false, feedback: "document 是名詞「文件」。" },
+    { id: "document", type: "句型搭配", show: "an important ______ / 填入：document", ans: true, feedback: "應填入 document。" },
+
+    // 132. remind (辨析: True / 句型: False)
+    { id: "remind", type: "單字辨析", word: "<u><b>remind</b></u> employees about safety rules", show: "提醒", ans: true, feedback: "remind 是動詞「提醒」。" },
+    { id: "remind", type: "句型搭配", show: "______ employees about safety rules / 填入：encourage", ans: false, feedback: "應填入 remind。" },
+
+    // 133. require (辨析: False / 句型: True)
+    { id: "require", type: "單字辨析", word: "Workers are <u><b>required</b></u> to follow the schedule.", show: "負責人、代表人", ans: false, feedback: "require 是動詞「需要」。" },
+    { id: "require", type: "句型搭配", show: "Workers are ______ to follow the schedule. / 填入：required", ans: true, feedback: "應填入 required。" },
+
+    // 134. representative (辨析: True / 句型: False)
+    { id: "representative", type: "單字辨析", word: "a sales <u><b>representative</b></u>", show: "負責人、代表人", ans: true, feedback: "representative 是名詞「負責人、代表人」。" },
+    { id: "representative", type: "句型搭配", show: "a sales ______ / 填入：impress", ans: false, feedback: "應填入 representative。" },
+
+    // 135. packaging (辨析: False / 句型: True)
+    { id: "packaging", type: "單字辨析", word: "the <u><b>packaging</b></u> area in the factory", show: "說明、敘述、描寫", ans: false, feedback: "packaging 是名詞「包裝(業)、包材」。" },
+    { id: "packaging", type: "句型搭配", show: "the ______ area in the factory / 填入：packaging", ans: true, feedback: "應填入 packaging。" },
+
+    // 136. description (辨析: True / 句型: False)
+    { id: "description", type: "單字辨析", word: "a job <u><b>description</b></u> on the website", show: "說明、敘述、描寫", ans: true, feedback: "description 是名詞「說明、敘述、描寫」。" },
+    { id: "description", type: "句型搭配", show: "a job ______ on the website / 填入：property", ans: false, feedback: "應填入 description。" },
+
+    // 137. property (辨析: False / 句型: True)
+    { id: "property", type: "單字辨析", word: "a <u><b>property</b></u> manager for real estate", show: "分機", ans: false, feedback: "property 是名詞「資產、財產;房地產」。" },
+    { id: "property", type: "句型搭配", show: "a ______ manager for real estate / 填入：property", ans: true, feedback: "應填入 property。" },
+
+    // 138. extension (辨析: True / 句型: False)
+    { id: "extension", type: "單字辨析", word: "Call me at <u><b>extension</b></u> 5388.", show: "分機", ans: true, feedback: "extension 是名詞「分機」。" },
+    { id: "extension", type: "句型搭配", show: "Call me at ______ 5388. / 填入：inquire", ans: false, feedback: "應填入 extension。" },
+
+    // 139. inquire (辨析: False / 句型: True)
+    { id: "inquire", type: "單字辨析", word: "<u><b>inquire</b></u> about the new position", show: "商品", ans: false, feedback: "inquire 是動詞「詢問」。" },
+    { id: "inquire", type: "句型搭配", show: "______ about the new position / 填入：inquire", ans: true, feedback: "應填入 inquire。" },
+
+    // 140. merchandise (辨析: True / 句型: False)
+    { id: "merchandise", type: "單字辨析", word: "display <u><b>merchandise</b></u> on the shelves", show: "商品", ans: true, feedback: "merchandise 是名詞「商品」。" },
+    { id: "merchandise", type: "句型搭配", show: "display ______ on the shelves / 填入：highly", ans: false, feedback: "應填入 merchandise。" },
+
+    // 141. highly (辨析: False / 句型: True)
+    { id: "highly", type: "單字辨析", word: "a <u><b>highly</b></u> competitive market", show: "結果", ans: false, feedback: "highly 是副詞「非常」。" },
+    { id: "highly", type: "句型搭配", show: "a ______ competitive market / 填入：highly", ans: true, feedback: "應填入 highly。" },
+
+    // 142. result (辨析: True / 句型: False)
+    { id: "result", type: "單字辨析", word: "The campaign <u><b>resulted</b></u> in more sales.", show: "結果", ans: true, feedback: "result 是動詞「結果」。" },
+    { id: "result", type: "句型搭配", show: "The campaign ______ in more sales. / 填入：assistance", ans: false, feedback: "應填入 resulted。" },
+
+    // 143. assistance (辨析: False / 句型: True)
+    { id: "assistance", type: "單字辨析", word: "Thank you for your <u><b>assistance</b></u> with the project.", show: "鼓勵、促進", ans: false, feedback: "assistance 是名詞「協助」。" },
+    { id: "assistance", type: "句型搭配", show: "Thank you for your ______ with the project. / 填入：assistance", ans: true, feedback: "應填入 assistance。" },
+
+    // 144. encourage (辨析: True / 句型: False)
+    { id: "encourage", type: "單字辨析", word: "Employees are <u><b>encouraged</b></u> to join the seminar.", show: "鼓勵、促進", ans: true, feedback: "encourage 是動詞「鼓勵、促進」。" },
+    { id: "encourage", type: "句型搭配", show: "Employees are ______ to join the seminar. / 填入：individual", ans: false, feedback: "應填入 encouraged。" },
+
+    // 145. individual (辨析: False / 句型: True)
+    { id: "individual", type: "單字辨析", word: "each <u><b>individual</b></u> in the department", show: "實驗室", ans: false, feedback: "individual 是名詞「個人」。" },
+    { id: "individual", type: "句型搭配", show: "each ______ in the department / 填入：individual", ans: true, feedback: "應填入 individual。" },
+
+    // 146. laboratory (辨析: True / 句型: False)
+    { id: "laboratory", type: "單字辨析", word: "safety rules in the <u><b>laboratory</b></u>", show: "實驗室", ans: true, feedback: "laboratory 是名詞「實驗室」。" },
+    { id: "laboratory", type: "句型搭配", show: "safety rules in the ______ / 填入：consider", ans: false, feedback: "應填入 laboratory。" },
+
+    // 147. consider (辨析: False / 句型: True)
+    { id: "consider", type: "單字辨析", word: "<u><b>consider</b></u> working abroad", show: "總部", ans: false, feedback: "consider 是動詞「認為;考慮」。" },
+    { id: "consider", type: "句型搭配", show: "______ working abroad / 填入：consider", ans: true, feedback: "應填入 consider。" },
+
+    // 148. headquarters (辨析: True / 句型: False)
+    { id: "headquarters", type: "單字辨析", word: "move the <u><b>headquarters</b></u> to New York", show: "總部", ans: true, feedback: "headquarters 是名詞「總部」。" },
+    { id: "headquarters", type: "句型搭配", show: "move the ______ to New York / 填入：mainly", ans: false, feedback: "應填入 headquarters。" },
+
+    // 149. ship (辨析: False / 句型: True)
+    { id: "ship", type: "單字辨析", word: "We are ready to <u><b>ship</b></u> your order.", show: "商業的、貿易的", ans: false, feedback: "ship 是動詞「出貨、運送」。" },
+    { id: "ship", type: "句型搭配", show: "We are ready to ______ your order. / 填入：ship", ans: true, feedback: "應填入 ship。" },
+
+    // 150. commercial (辨析: True / 句型: False)
+    { id: "commercial", type: "單字辨析", word: "<u><b>commercial</b></u> real estate in the downtown area", show: "商業的、貿易的", ans: true, feedback: "commercial 是形容詞「商業的、貿易的」。" },
+    { id: "commercial", type: "句型搭配", show: "______ real estate in the downtown area / 填入：expert", ans: false, feedback: "應填入 commercial。" }
 ];
 
 let questions = [];
@@ -199,9 +248,36 @@ let score = 0;
 let userHistoryList = []; 
 
 function initQuiz() {
-    const shuffled = [...rawData].sort(() => 0.5 - Math.random());
-    questions = shuffled.slice(0, 5);
-    currentIndex = 0; score = 0; userHistoryList = [];
+    const groups = {};
+    rawData.forEach(item => {
+        if (!groups[item.id]) groups[item.id] = [];
+        groups[item.id].push(item);
+    });
+
+    const wordIds = Object.keys(groups);
+    const shuffledIds = wordIds.sort(() => 0.5 - Math.random()).slice(0, 5);
+
+    // 強制題型分配：5 題中至少各半（3:2 或是 2:3）兩種類型混合，防止 5 題皆為同類型
+    const typesToAssign = ["單字辨析", "單字辨析", "句型搭配", "句型搭配", Math.random() > 0.5 ? "單字辨析" : "句型搭配"];
+    typesToAssign.sort(() => 0.5 - Math.random());
+
+    let selectedQuestions = [];
+    shuffledIds.forEach((id, index) => {
+        const targetType = typesToAssign[index];
+        const questionOfTargetType = groups[id].find(q => q.type === targetType);
+        if (questionOfTargetType) {
+            selectedQuestions.push(questionOfTargetType);
+        } else {
+            const randomPick = groups[id][Math.floor(Math.random() * groups[id].length)];
+            selectedQuestions.push(randomPick);
+        }
+    });
+
+    questions = selectedQuestions.sort(() => 0.5 - Math.random());
+    
+    currentIndex = 0; 
+    score = 0; 
+    userHistoryList = [];
     document.getElementById('main-banner').classList.remove('compact');
     document.getElementById('intro-area').style.display = 'block';
     document.getElementById('quiz-section').style.display = 'block';
@@ -217,9 +293,11 @@ function loadQuestion() {
     document.getElementById('type-tag').innerText = q.type;
     const wordEl = document.getElementById('word');
     
+    // 嚴格清除與重設，徹底修正 DOM 單字與 undefined 殘留 Bug
     if (q.type === "句型搭配") {
-        wordEl.style.display = 'none';
-        document.getElementById('content').innerText = q.show;
+        wordEl.style.display = 'none'; 
+        wordEl.innerHTML = ''; 
+        document.getElementById('content').innerText = q.show; 
     } else {
         wordEl.style.display = 'block';
         wordEl.innerHTML = q.word; 
@@ -237,7 +315,13 @@ function handleAnswer(userAns) {
     document.querySelectorAll('.btn-group button').forEach(b => b.disabled = true);
     feedback.style.display = 'block';
     const isCorrect = (userAns === q.ans);
-    userHistoryList.push({ word: q.word, isCorrect: isCorrect, feedback: q.feedback });
+    
+    userHistoryList.push({ 
+        word: q.type === "句型搭配" ? "句型搭配" : q.word, 
+        isCorrect: isCorrect, 
+        feedback: q.feedback 
+    });
+    
     if (isCorrect) {
         score += 20;
         feedback.innerText = "✅ " + q.feedback;
@@ -265,11 +349,11 @@ function showResult() {
     const now = new Date();
     const timeStr = `${now.getMonth() + 1}/${now.getDate()} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
 
-    // 使用獨立的 EP6 儲存欄位
-    let history = JSON.parse(localStorage.getItem('toeic_history_ep6')) || [];
+    // 專屬緩存 Key值，隔離關卡資料
+    let history = JSON.parse(localStorage.getItem('toeic_history_ep06_v2')) || [];
     history.unshift({ score: score, time: timeStr });
     if(history.length > 5) history.pop();
-    localStorage.setItem('toeic_history_ep6', JSON.stringify(history));
+    localStorage.setItem('toeic_history_ep06_v2', JSON.stringify(history));
     renderHistoryList(history);
 
     document.getElementById('review-list').innerHTML = userHistoryList.map(item => `
@@ -296,7 +380,7 @@ function renderHistoryList(history) {
 
 function confirmClear() {
     if (confirm("確定要清除所有練習紀錄嗎？")) {
-        localStorage.removeItem('toeic_history_ep6');
+        localStorage.removeItem('toeic_history_ep06_v2');
         renderHistoryList([]);
     }
 }
